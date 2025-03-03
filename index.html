@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('mwk.jpg') no-repeat center center fixed;
+            background-size: 100% 100%;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .photos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .photos img {
+            width: 150px;
+            height: auto;
+            aspect-ratio: 3/4; /* Menyesuaikan foto portrait */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            transform: scale(1);
+            transition: transform 0.5s ease-in-out;
+        }
+        .photos img:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background: #ff4b5c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #e43f4d;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            text-align: center;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #ff4b5c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .heart-btn {
+            position: absolute;
+            width: 100px;
+            height: 90px;
+            background: red;
+            clip-path: path('M50 15 C20 -10, -20 40, 50 85 C120 40, 80 -10, 50 15 Z');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Selamat Ulang Tahun!</h1>
+        <div class="photos">
+            <img src="photo1.jpg" alt="Foto 1">
+            <img src="photo2.jpg" alt="Foto 2">
+            <img src="photo3.jpg" alt="Foto 3">
+            <img src="photo4.jpg" alt="Foto 4">
+        </div>
+        <button class="btn" onclick="showPopup()">tekan yang ini sayang</button>
+        <div class="heart-btn" id="movingHeart">Buka Dong</div>
+        <button class="btn" onclick="window.location.href='teka-teki.html'">Main Teka-Teki</button>
+    </div>
+    <div class="popup" id="popup">
+        <p>Selamat ulang tahun sayang acuu hope u will always found what you want in life. i hope u the best for your future
+        success. I LOVE YOU SHERINA. 🎉🎂
+</p>
+        <button onclick="closePopup()">Tutup</button>
+    </div>
+    <script>
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        const movingHeart = document.getElementById("movingHeart");
+        movingHeart.style.top = "70%";
+        movingHeart.style.left = "50%";
+        movingHeart.style.transform = "translate(-50%, -50%)";
+
+        movingHeart.addEventListener("mouseover", function () {
+            const newX = Math.random() * (window.innerWidth - movingHeart.clientWidth);
+            const newY = Math.random() * (window.innerHeight - movingHeart.clientHeight);
+            movingHeart.style.left = `${newX}px`;
+            movingHeart.style.top = `${newY}px`;
+        });
+    </script>
+</body>
+
+</html>

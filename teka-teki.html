@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teka-Teki Silang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        input {
+            margin: 10px;
+            padding: 8px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Teka-Teki Silang</h1>
+        <p>Jawablah pertanyaan berikut dengan benar!</p>
+        <div>
+            <label>1. Tanggal berapa pertama kali kita jalan?</label><br>
+            <input type="text" id="q1">
+        </div>
+        <div>
+            <label>2. Tanggal berapa aku pertama kali chat kamu?</label><br>
+            <input type="text" id="q2">
+        </div>
+        <div>
+            <label>3. Apa cita-cita aku?</label><br>
+            <input type="text" id="q3">
+        </div>
+        <div>
+            <label>4. Seberapa sayang aku sama kamu?</label><br>
+            <input type="text" id="q4">
+        </div>
+        <div>
+            <label>5. Sebutkan hal yang paling aku sukai?</label><br>
+            <input type="text" id="q5">
+        </div>
+        <br>
+        <button class="btn" onclick="cekJawaban()">Submit</button>
+        <p id="hasil"></p>
+    </div>
+    <script>
+        function cekJawaban() {
+            const jawabanBenar = [
+                "tiganovember",
+                "25september",
+                "pengusaha",
+                "banget",
+                "kamu"
+            ];
+
+            let jawabanUser = [
+                document.getElementById("q1").value.toLowerCase(),
+                document.getElementById("q2").value.toLowerCase(),
+                document.getElementById("q3").value.toLowerCase(),
+                document.getElementById("q4").value.toLowerCase(),
+                document.getElementById("q5").value.toLowerCase()
+            ];
+
+            let benar = 0;
+            for (let i = 0; i < jawabanBenar.length; i++) {
+                if (jawabanUser[i] === jawabanBenar[i]) {
+                    benar++;
+                }
+            }
+
+            let hasil = document.getElementById("hasil");
+            if (benar === jawabanBenar.length) {
+                hasil.innerHTML = "Selamat! Kamu menjawab semua dengan benar ❤️";
+                hasil.style.color = "green";
+            } else {
+                hasil.innerHTML = `Kamu menjawab ${benar} dari 5 dengan benar. Coba lagi!`;
+                hasil.style.color = "red";
+            }
+        }
+    </script>
+</body>
+
+</html>
